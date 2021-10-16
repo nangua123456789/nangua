@@ -31,11 +31,37 @@ Number、String、Array、Object、Boolean
 ### 字符串方法：
 length: 获取字符串长度   
 
-indexOf()查找字符串并获取其位置   
+indexOf(str,n)从n开始搜索一个str，并将搜索的索引值返回   
     
-slice()   
-    
+charAr()返回指定索引位置的字符   
+
+concat(n.m)合并字符串   
+
+slice(n,m)返回字符串n到m之间位置的字符串
+
+substring(n,m)返回从n开始的m的字符串   
+
 toLowerCase()和toUpperCase()转换大小写
+
+### 数组方法：
+length属性：获取数组长度   
+
+####方法：
+push():向数组最后添加数组   
+
+pop()删除最后的数组   
+
+unshift():向数组头部添加数据  
+
+shift():删除数组第一个元素  
+
+concat():将两个数组合并
+
+reverse()对数组进行倒序处理
+
+join（）将数组转换为字符串
+
+splice（）删除、修改或向数组中添加数据
 
 ### 事件机制：
 addEventListener('事件',function) 创建事件；   
