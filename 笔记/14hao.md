@@ -68,8 +68,9 @@ addEventListener('事件',function) 创建事件；
 
 removeEventListener('事件'删除的函数)
 
-#　获取数据
+##　获取数据
 ###　API
+
 什么是API：应用程序接口（API，Application Programming Interface）是基于编程语言构建的结构，使开发人员更容易地创建复杂的功能。它们抽象了复杂的代码，并提供一些简单的接口规则直接使用。
 API分为两种：浏览器API内置于Web浏览器中，能从浏览器和电脑周边环境中提取数据，用来做有用的复杂的事情；　还有第三方API两种
 API如何工作：不同的JavaScript API以稍微不同的方式工作，但通常它们具有共同的特征和相似的主题。它们是基于对象的，API使用一个或多个 JavaScript objects 在您的代码中进行交互，这些对象用作API使用的数据（包含在对象属性中）的容器以及API提供的功能（包含在对象方法中）。
