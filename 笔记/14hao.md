@@ -68,23 +68,23 @@ addEventListener('事件',function) 创建事件；
 
 removeEventListener('事件'删除的函数)
 
-＃　获取数据
-＃＃＃　API
+#　获取数据
+###　API
 什么是API：应用程序接口（API，Application Programming Interface）是基于编程语言构建的结构，使开发人员更容易地创建复杂的功能。它们抽象了复杂的代码，并提供一些简单的接口规则直接使用。
 API分为两种：浏览器API内置于Web浏览器中，能从浏览器和电脑周边环境中提取数据，用来做有用的复杂的事情；　还有第三方API两种
 API如何工作：不同的JavaScript API以稍微不同的方式工作，但通常它们具有共同的特征和相似的主题。它们是基于对象的，API使用一个或多个 JavaScript objects 在您的代码中进行交互，这些对象用作API使用的数据（包含在对象属性中）的容器以及API提供的功能（包含在对象方法中）。
 
-＃＃＃　从服务器获取数据
+### 从服务器获取数据
 注意：
 在早期，这种技术被称为注意：在早期，这种通用技术被称为Asynchronous JavaScript and XML（Ajax）， 因为它倾向于使用XMLHttpRequest 来请求XML数据。 但通常不是这种情况 (你更有可能使用 XMLHttpRequest 或 Fetch 来请求JSON), 但结果仍然是一样的，术语“Ajax”仍然常用于描述这种技术。
 
-＃＃基本AXAJ请求：
-XMLHttpRｑｕｓｅｔ
+###　基本AXAJ请求：
+XMLHttpRRequest
 Fetch
 Fetch API基本上是XHR的一个现代替代品——它是最近在浏览器中引入的，它使异步HTTP请求在JavaScript中更容易实现，对于开发人员和在Fetch之上构建的其他API来说都是如此。
 关于promises 
 当你第一次见到它们的时候，promises会让你有点困惑，但现在不要太担心这个。在一段时间之后，您将会习惯它们，特别是当您了解更多关于现代JavaScript api的时候——大多数现代的JavaScript api都是基于promises的。
-例子（这就是ｐｒｏｍｉｓｅｓ的基本样子）：fetch(url).then(function(response) {
+例子（这就是promises 的基本样子）：fetch(url).then(function(response) {
   response.text().then(function(text) {
     poemDisplay.textContent = text;
   });
