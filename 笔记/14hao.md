@@ -68,8 +68,8 @@ addEventListener('事件',function) 创建事件；
 
 removeEventListener('事件'删除的函数)
 
-##　获取数据
-###　API
+## 获取数据
+### API
 
 什么是API：应用程序接口（API，Application Programming Interface）是基于编程语言构建的结构，使开发人员更容易地创建复杂的功能。它们抽象了复杂的代码，并提供一些简单的接口规则直接使用。
 API分为两种：浏览器API内置于Web浏览器中，能从浏览器和电脑周边环境中提取数据，用来做有用的复杂的事情；　还有第三方API两种
@@ -79,7 +79,7 @@ API如何工作：不同的JavaScript API以稍微不同的方式工作，但通
 注意：
 在早期，这种技术被称为注意：在早期，这种通用技术被称为Asynchronous JavaScript and XML（Ajax）， 因为它倾向于使用XMLHttpRequest 来请求XML数据。 但通常不是这种情况 (你更有可能使用 XMLHttpRequest 或 Fetch 来请求JSON), 但结果仍然是一样的，术语“Ajax”仍然常用于描述这种技术。
 
-###　基本AXAJ请求：
+### 基本AXAJ请求：
 XMLHttpRRequest
 Fetch
 Fetch API基本上是XHR的一个现代替代品——它是最近在浏览器中引入的，它使异步HTTP请求在JavaScript中更容易实现，对于开发人员和在Fetch之上构建的其他API来说都是如此。
