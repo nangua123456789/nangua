@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        canvas{
+            width: 150px;
+            height: 150px;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="chess"></canvas>
+
+</body>
+</html>
+<script>
+    //获取画布canvas
+    var chess = document.getElementById('chess');
+    var context = chess.getContext('2d');
+    context.strokeStyle = "#686868";
+    context.beginPath();
+    //使用canvas画出棋盘
+    for(var i = 0;i<4;i++){
+        context.moveTo(0,i*50);
+        context.lineTo(300,i*50);
+        context.moveTo(i*100,0);
+        context.lineTo(i*100,150);
+        context.stroke();
+    }
+    //记录当前时点击第一下还是第二下
+    var k = 0;
+    //记录每次点击时的棋子坐标
+    var arr = []
+    //创建点击事件
+    chess.onclick = function(e){
+        k = k+1;
+        var arr1 = []
+        //获取鼠标点击时，鼠标的位置
+        var i = Math.ceil(e.offsetX/50);
+        var j = Math.ceil(e.offsetY/50);
+        
+        arr1.push(i,j);
+        arr.push(arr1);
+        //这里我的想法时这样的，将每次点击时鼠标的左边记录在数组中，但后面点击后鼠标的位置存在于数组中
+        //则表示该位置已经有棋子了
+        for(var h = 0;h<arr.length;h++){
+                if(arr[h][0] == arr1[0]){
+                    if(arr[h][1] == arr1[1]){
+                        console.log('xiandeng')
+                    }
+                
+                }
+                console.log(arr[h]);
+        }
+        //判断当k可以为2整除时，点击显示的时X，否则显示O
+        if(k%2==0){
+            var context = chess.getContext('2d');
+            context.beginPath();
+            context.font = 'bold 40px arial'
+            context.fillstyle = "black";
+            context.fillText('X',40+(i-1)*100,40+(j-1)*50)
+            context.stroke();
+        }else{
+            var context = chess.getContext('2d');
+            context.beginPath();
+            context.font = 'bold 40px arial';
+            context.fillstyle = "black";
+            context.fillText('O',40+(i-1)*100,40+(j-1)*50);
+            context.stroke();
+        }
+    }
+        
+</script>
