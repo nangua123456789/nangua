@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>九宫格</title>
+    <style>
+         *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width: 150px;
+            height: 150px;
+            display: flex;
+            flex-wrap: wrap;
+            float: left;
+        }
+        #right{
+            width: 150px;
+            height: 150px;
+            margin-left: 20px;
+            float: left;
+        }
+        #box .cless{
+            width: 50px;
+            height: 50px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            text-align: center;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <div class="cless"></div>
+        <div class="cless"></div>
+        <div class="cless"></div>
+        <div class="cless"></div>
+        <div class="cless"></div>
+        <div class="cless"></div>
+        <div class="cless"></div>
+        <div class="cless"></div>
+        <div class="cless"></div>
+    </div>
+    <div id='right'>
+        <div class="next">NEXT PLARER : <span id='play'>X</span></div>
+        <button id="start">Go to game start</button>
+        <div class="step">
+        </div>
+    </div>
+</body>
+<script>
+    //获取box;
+    let box = document.getElementById('box');
+    //获取下一个点击的棋子是什么棋子
+    let play = document.getElementById('play')
+    //获取点击刷新重新开始
+    let start = document.getElementById('start');
+    //初始化，初始player，让他等于X
+    let player = 'X';
+    //记录输赢，如果赢的话等于true;输的话等于false;
+    let haswinner = false;
+    //获取棋盘
+    let cless = document.getElementsByClassName('cless');
+    //获取显示点击记录的东西
+    let step = document.getElementsByClassName('step')[0];
+    let h = 0;
+    //赢的方法：
+    var winner = [
+      [0, 1, 2],
+      [3, 4, 5],
+      [6, 7, 8],
+      [0, 4, 8],
+      [2, 4, 6],
+      [0, 3, 6],
+      [1, 4, 7],
+      [2, 5, 8],
+    ]
+    let stepdata = []
+    //checkwinner:判断输赢函数；
+    var checkwinner = function(arr){
+        // 通过some方法获取winner数组的每一个数组，再通过every遍历每一个数据，再通过includes判断是否相等；
+        return winner.some((win)=>win.every((w)=>arr.includes(w)))
+    }
+    //循环棋盘
+    for(let i = 0;i<cless.length;i++){
+        // 通过数组记录每次点击时
+        var arr = [];
+        var arr1 = [];
+        // 点击每一个棋子
+        cless[i].onclick = function(){
+            // 如果当前格子的内容不等于空或赢的时候就直接推出
+            if(this.innerHTML!=''|| haswinner ){
+                return;
+            }
+            // 让当前棋盘的内容显示等于player
+            this.innerHTML = player;
+            // 当player等于X时就让arrtemp等于arr，否则就让其等于arr1
+            const arrtemp = player === 'X' ? arr : arr1;
+            // 添加数据到arrtemp中
+            arrtemp.push(i);
+            if(arrtemp.length>2){
+
+                haswinner = checkwinner(arrtemp);
+            }
+            player = player === 'X' ? 'O' : 'X'
+            play.innerHTML = player;
+            // 每次点击将点击的id和内容添加到stepdata中
+            stepdata.push({id:i,innerHTML:this.innerHTML})
+            // 每次点击创建一个button
+            let btn = document.createElement('button');
+            btn.index = h+1;
+            btn.innerHTML = 'Go to move #' + btn.index;
+            btn.onclick = function(){
+                // 截取当前点击的btn对应stepdata的id前面的数组
+                const curHistory = stepdata.slice(0,this.index);
+                // 获取棋盘
+                const cells = document.querySelectorAll('.cless');
+                // 循环棋盘
+                for(let j = 0;j<cells.length;j++){
+                    const cell = cells[j];
+                    // 判断curHistory中id是否等于循环的次数，如果等于则不清空，不等于就清空
+                    const hasValElem = curHistory.find((v) => v.id === j)
+                    cell.innerHTML = hasValElem ? hasValElem.innerHTML : ''
+                } 
+            }
+            step.appendChild(btn);
+            h++;
+            
+        }
+    }
+    // 点击清空
+    start.onclick = function(){
+        for(let t = 0;t<cless.length;t++){
+            cless[t].innerHTML = ''
+        }
+        arr = [];
+        arr1 = [];
+        play.innerHTML = 'X'
+        h = 0;
+        let btns = document.querySelectorAll('.step button')
+        for(let btn of btns){
+            step.removeChild(btn)
+        }
+    }
+</script>
+</html>
